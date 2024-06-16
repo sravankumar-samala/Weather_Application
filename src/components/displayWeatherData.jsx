@@ -9,9 +9,12 @@ export default function DisplayWeatherData({ weatherData, dateTime }) {
           src={`http://openweathermap.org/img/w/${weatherData?.weather[0]?.icon}.png`}
           alt="weather icon"
         />
-        <h2 className="temperature">
-          {Math.round(weatherData?.main?.temp)}&deg;C
-        </h2>
+        <div>
+          <h2 className="temperature">
+            {Math.round(weatherData?.main?.temp)}&deg;C
+          </h2>
+          <p className="description">{weatherData?.weather[0].description}</p>
+        </div>
       </div>
       <div className="time-date-display-container">
         <h2 className="time">
