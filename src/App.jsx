@@ -52,7 +52,7 @@ function App() {
     <main className="main-container" data-theme={isDark ? "dark" : "light"}>
       <section className="weather-app-container">
         <header>
-          <h1 className="tittle">Climate Cast</h1>
+          <h1 className="tittle">Weather Cast</h1>
           <button
             type="button"
             onClick={() => setIsDark(!isDark)}
