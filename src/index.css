@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --fontLarge: clamp(2.3rem, 3.5vw, 4rem);
+  --fontMedium: clamp(2rem, 3.2vw, 3.7rem);
+  --fontSmall: clamp(1rem, 1.5vw, 2rem);
+
+  --radialCircleColor: #ffffff;
+  --radialPrimaryColor: #2f67a3;
+  --themeTextColor: #01060f;
+  --inputBorder: rgba(6, 11, 54, 0.568);
+  --glassBackground: #ffffff27;
+
+  --blur: blur(90px);
+
+  --shadow: 2px 2px 10px #00000027;
+  --drop-shadow: rgba(0, 0, 0, 0.397);
+}
+[data-theme="dark"] {
+  --radialCircleColor: #00264e;
+  --radialPrimaryColor: #01060f;
+  --themeTextColor: #ecebfa;
+  --inputBorder: rgb(160, 152, 152);
+  --glassBackground: #ffffff1a;
+
+  --blur: blur(50px);
+
+  --drop-shadow: rgba(255, 255, 255, 0.397);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  font-family: "Merriweather", serif;
+  overflow: hidden;
+}
+button {
+  cursor: pointer;
+}
+input,
+button {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+.main-container {
+  background: radial-gradient(
+      circle at 10% 20%,
+      var(--radialCircleColor) 0,
+      var(--radialPrimaryColor) 20%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      var(--radialCircleColor) 0,
+      var(--radialPrimaryColor) 20%
+    );
+  color: white;
+  min-height: min(100vh, 700px);
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  display: grid;
+  text-align: center;
+  position: relative;
+  padding: 1.5em 1em;
+}
+
+.main-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: var(--blur);
+  background: linear-gradient(to top, #1212129a 6%, transparent);
+  z-index: 9;
+}
+.main-container::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  background-color: var(--radialCircleColor);
+  border-radius: 50%;
+  width: 200px;
+  aspect-ratio: 1;
+  z-index: 1;
+}
+@media screen and (min-width: 1400px) {
+  .main-container {
+    border-radius: 10px;
+  }
+}
+
+.weather-app-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  z-index: 999;
+}
+header {
+  position: relative;
+  width: min(100%, 500px);
+  margin: 0 auto;
+}
+.tittle {
+  font-size: var(--fontLarge);
+}
+.toggle-btn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+.weather-container-wrapper {
+  font-family: "Roboto", sans-serif;
+  display: grid;
+  grid-template-rows: 100px auto;
+  justify-content: center;
+}
+form {
+  font-size: 1.5rem;
+  width: 300px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 0.7em;
+  border-radius: 10px;
+  background-color: var(--glassBackground);
+  border: 1px solid rgba(255, 255, 255, 0.226);
+  box-shadow: var(--shadow);
+}
+.search-btn {
+  padding-inline: 0.7em 0;
+  color: var(--themeTextColor);
+}
+form input {
+  flex-grow: 1;
+  color: var(--themeTextColor);
+  border-right: 2px solid var(--inputBorder);
+  font-size: var(--fontSmall);
+}
+form input::placeholder {
+  color: var(--inputBorder);
+}
+.weather-display-container {
+  display: grid;
+  align-items: start;
+  gap: 1em;
+}
+.city-name {
+  align-self: end;
+  font-size: var(--fontMedium);
+}
+.time-date-display-container {
+  background-color: var(--glassBackground);
+  border: 1px solid rgba(255, 255, 255, 0.205);
+  border-radius: 6px;
+  padding: 0.5em 1em;
+  box-shadow: var(--shadow);
+  width: fit-content;
+  margin: 0 auto;
+}
+.display-temperature img {
+  filter: drop-shadow(2px 2px 10px var(--drop-shadow));
+  width: 80px;
+  aspect-ratio: 1;
+}
+@media screen and (min-width: 570px) {
+  .display-temperature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+}
+.temperature {
+  font-size: var(--fontLarge);
+}
+.time {
+  font-size: var(--fontMedium);
+}
+.time span {
+  font-size: var(--fontSmall);
+  margin-left: 5px;
+  font-weight: normal;
+}
+.date {
+  letter-spacing: 0.7px;
+  font-size: var(--fontSmall);
+}
