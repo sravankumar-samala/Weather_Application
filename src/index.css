@@ -57,7 +57,7 @@ body {
   align-content: center;
   font-family: "Merriweather", serif;
   background-color: var(--bodybg);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 button {
   cursor: pointer;
@@ -214,6 +214,7 @@ form {
   .weather-container-wrapper {
     grid-template-rows: auto auto;
     gap: 0.5em;
+    padding-top: 1em;
   }
   .tittle {
     text-align: left;
