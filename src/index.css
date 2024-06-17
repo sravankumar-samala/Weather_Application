@@ -179,9 +179,6 @@ form {
 .search::placeholder {
   color: var(--inputBorder);
 }
-/* .serach::-webkit-search-cancel-button {
-  background: red;
-} */
 .weather-display-container {
   border: 1px solid #ffffff38;
   border-radius: 10px;
@@ -212,7 +209,7 @@ form {
 }
 @media screen and (max-width: 550px) {
   .weather-container-wrapper {
-    grid-template-rows: auto auto;
+    grid-template-rows: 55px auto;
     gap: 0.5em;
     padding-top: 1em;
   }
